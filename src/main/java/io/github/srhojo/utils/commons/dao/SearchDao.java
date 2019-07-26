@@ -1,9 +1,9 @@
 package io.github.srhojo.utils.commons.dao;
 
-import java.awt.print.Pageable;
 import java.util.List;
 
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 
 /**
