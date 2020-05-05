@@ -14,10 +14,31 @@ pipeline {
             }
         }
 
-        stage ('Build') {
+        stage('Build') {
             steps {
-                echo 'This is a minimal pipeline.'
+                sh 'mvn clean compile'
             }
+        }
+        stage ('Test') {
+            steps {
+                sh 'mvn test'
+            }
+            post {
+                success {
+                    junit 'target/surefire-reports/**/*.xml' 
+                }
+            }
+        }
+        stage('Packaging') {
+            steps {
+                sh 'mvn package'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'Pending...'
+            }
+
         }
     }
 }
