@@ -36,7 +36,7 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                sh 'mvn deploy'
+                nexusPublisher nexusInstanceId: 'nexus', nexusRepositoryId: 'maven-releases', packages: []
             }
 
         }
