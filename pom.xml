@@ -32,7 +32,7 @@
 		<repository>
 			<id>maven-group</id>
 			<name>Local Central Repository</name>
-			<url>http://127.0.0.1:8181/repository/maven-group/</url>
+			<url>http://192.168.1.70:8181/repository/maven-group/</url>
 			<snapshots>
 				<enabled>true</enabled>
 			</snapshots>
@@ -43,13 +43,13 @@
 		<repository>
 			<id>nexus-releases</id>
 			<name>release Repository</name>
-			<url>http://127.0.0.1:8181/repository/maven-releases/</url>
+			<url>http://192.168.1.70:8181/repository/maven-releases/</url>
 			<layout>default</layout>
 		</repository>
 		<snapshotRepository>
 			<id>nexus-snapshots</id>
 			<name>Snapshots Repository</name>
-			<url>http://127.0.0.1:8181/repository/maven-snapshots/</url>
+			<url>http://192.168.1.70:8181/repository/maven-snapshots/</url>
 		</snapshotRepository>
 	</distributionManagement>
 	<!-- End test-->
