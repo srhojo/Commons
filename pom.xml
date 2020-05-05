@@ -1,142 +1,168 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
 
-  <groupId>io.github.srhojo.utils</groupId>
-  <artifactId>commons</artifactId>
-  <version>1.0.0</version>
+	<groupId>io.github.srhojo.utils</groupId>
+	<artifactId>commons</artifactId>
+	<version>1.0.0</version>
 
-  <name>restclient</name>
-  <url>https://github.com/srhojo/Commons</url>
-  <description>Common utility library</description>
+	<name>restclient</name>
+	<url>https://github.com/srhojo/Commons</url>
+	<description>Common utility library</description>
 
 	<licenses>
-	  <license>
-	    <name>The Apache Software License, Version 2.0</name>
-	    <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-	  </license>
+		<license>
+			<name>The Apache Software License, Version 2.0</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+		</license>
 	</licenses>
 
-  <developers>
-    <developer>
-      <name>Srhojo</name>
-      <organization>srhojo</organization>
-      <organizationUrl>https://github.com/srhojo</organizationUrl>
-    </developer>
-  </developers>
+	<developers>
+		<developer>
+			<name>Srhojo</name>
+			<organization>srhojo</organization>
+			<organizationUrl>https://github.com/srhojo</organizationUrl>
+		</developer>
+	</developers>
 
+	<!-- Test using jenkins and nexus at dockers-->
+	<repositories>
+		<repository>
+			<id>maven-group</id>
+			<name>Local Central Repository</name>
+			<url>http://127.0.0.1:8181/repository/maven-group/</url>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
 
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <maven.compiler.source>1.8</maven.compiler.source>
-    <maven.compiler.target>1.8</maven.compiler.target>
+	<distributionManagement>
+		<repository>
+			<id>nexus-releases</id>
+			<name>release Repository</name>
+			<url>http://127.0.0.1:8181/repository/maven-releases/</url>
+			<layout>default</layout>
+		</repository>
+		<snapshotRepository>
+			<id>nexus-snapshots</id>
+			<name>Snapshots Repository</name>
+			<url>http://127.0.0.1:8181/repository/maven-snapshots/</url>
+		</snapshotRepository>
+	</distributionManagement>
+	<!-- End test-->
 
-	<jacoco.version>0.8.4</jacoco.version>
-    <spring.version>5.1.8.RELEASE</spring.version>
-    <spring-data.version>2.1.9.RELEASE</spring-data.version>
-    
-    <rsql-parser.version>2.1.0</rsql-parser.version>
-    <javax.persintence.version>2.2</javax.persintence.version>
-    <javax.validation.version>2.0.1.Final</javax.validation.version>
-    <com.fasterxml.jackson.core.version>[2.9.9.1,)</com.fasterxml.jackson.core.version>
-    <io.springfox.swagger.version>2.9.2</io.springfox.swagger.version>
-  </properties>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
 
-  <dependencies>
-    <!-- Spring -->
-    <dependency>
-      <groupId>org.springframework</groupId>
-      <artifactId>spring-core</artifactId>
-      <version>${spring.version}</version>
-    </dependency>
-	<dependency>
-	    <groupId>org.springframework.data</groupId>
-	    <artifactId>spring-data-commons</artifactId>
-	    <version>${spring-data.version}</version>
-	</dependency>
-	<dependency>
-	    <groupId>org.springframework.data</groupId>
-	    <artifactId>spring-data-jpa</artifactId>
-	    <version>${spring-data.version}</version>
-	</dependency>
+		<jacoco.version>0.8.4</jacoco.version>
+		<spring.version>5.1.8.RELEASE</spring.version>
+		<spring-data.version>2.1.9.RELEASE</spring-data.version>
 
-	<!--   RSQL -->	
-	<dependency>
-	    <groupId>cz.jirutka.rsql</groupId>
-	    <artifactId>rsql-parser</artifactId>
-	    <version>${rsql-parser.version}</version>
-	</dependency>
-	<dependency>
-	    <groupId>javax.persistence</groupId>
-	    <artifactId>javax.persistence-api</artifactId>
-	    <version>${javax.persintence.version}</version>
-	</dependency>
-		
-  	<!-- Validations -->
-    <dependency>
-      <groupId>javax.validation</groupId>
-      <artifactId>validation-api</artifactId>
-      <version>${javax.validation.version}</version>
-    </dependency>
+		<rsql-parser.version>2.1.0</rsql-parser.version>
+		<javax.persintence.version>2.2</javax.persintence.version>
+		<javax.validation.version>2.0.1.Final</javax.validation.version>
+		<com.fasterxml.jackson.core.version>[2.9.9.1,)</com.fasterxml.jackson.core.version>
+		<io.springfox.swagger.version>2.9.2</io.springfox.swagger.version>
+	</properties>
 
-   <!-- Swagger-core -->
-    <dependency>
-      <groupId>io.springfox</groupId>
-      <artifactId>springfox-swagger2</artifactId>
-      <version>${io.springfox.swagger.version}</version>
-    </dependency>
-  </dependencies>
+	<dependencies>
+		<!-- Spring -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-core</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-commons</artifactId>
+			<version>${spring-data.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-jpa</artifactId>
+			<version>${spring-data.version}</version>
+		</dependency>
 
-  <build>
-	<plugins>
-		<plugin>
-	      <groupId>org.apache.maven.plugins</groupId>
-	      <artifactId>maven-source-plugin</artifactId>
-	      <version>2.2.1</version>
-	      <executions>
-	        <execution>
-	          <id>attach-sources</id>
-	          <goals>
-	            <goal>jar-no-fork</goal>
-	          </goals>
-	        </execution>
-	      </executions>
-	    </plugin>
-	    <plugin>
-	      <groupId>org.apache.maven.plugins</groupId>
-	      <artifactId>maven-javadoc-plugin</artifactId>
-	      <version>2.9.1</version>
-	      <executions>
-	        <execution>
-	          <id>attach-javadocs</id>
-	          <goals>
-	            <goal>jar</goal>
-	          </goals>
-	        </execution>
-	      </executions>
-	    </plugin>
-		<plugin>
-			<groupId>org.jacoco</groupId>
-			<artifactId>jacoco-maven-plugin</artifactId>
-			<version>${jacoco.version}</version>
+		<!--   RSQL -->
+		<dependency>
+			<groupId>cz.jirutka.rsql</groupId>
+			<artifactId>rsql-parser</artifactId>
+			<version>${rsql-parser.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.persistence</groupId>
+			<artifactId>javax.persistence-api</artifactId>
+			<version>${javax.persintence.version}</version>
+		</dependency>
+
+		<!-- Validations -->
+		<dependency>
+			<groupId>javax.validation</groupId>
+			<artifactId>validation-api</artifactId>
+			<version>${javax.validation.version}</version>
+		</dependency>
+
+		<!-- Swagger-core -->
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger2</artifactId>
+			<version>${io.springfox.swagger.version}</version>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+				<version>2.2.1</version>
 				<executions>
-				    <execution>
-				        <id>default-prepare-agent</id>
-				        <goals>
-				            <goal>prepare-agent</goal>
-				        </goals>
-				    </execution>
-				    <execution>
-				        <id>default-report</id>
-				        <phase>prepare-package</phase>
-				        <goals>
-				            <goal>report</goal>
-				        </goals>
-				    </execution>
+					<execution>
+						<id>attach-sources</id>
+						<goals>
+							<goal>jar-no-fork</goal>
+						</goals>
+					</execution>
 				</executions>
-		</plugin>
-	</plugins>
-  </build>
+			</plugin>
+			<!-- <plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>2.9.1</version>
+				<executions>
+					<execution>
+						<id>attach-javadocs</id>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.jacoco</groupId>
+				<artifactId>jacoco-maven-plugin</artifactId>
+				<version>${jacoco.version}</version>
+				<executions>
+					<execution>
+						<id>default-prepare-agent</id>
+						<goals>
+							<goal>prepare-agent</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>default-report</id>
+						<phase>prepare-package</phase>
+						<goals>
+							<goal>report</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin> -->
+		</plugins>
+	</build>
 </project>
