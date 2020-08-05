@@ -5,7 +5,7 @@ package io.github.srhojo.utils.commons.mappers;
  * Interface who extend from InnerMapper and OuterMapper interfaces
  * </p>
  *
- * @author: srhojo
+ * @author srhojo
  * @see <a href="https://github.com/srhojo">GitHub</a>
  *
  * @param <I> Inner Object

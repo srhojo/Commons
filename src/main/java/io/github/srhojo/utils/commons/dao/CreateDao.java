@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
  *
  * CRUD Base dao
  *
- * @author: srhojo
+ * @author srhojo
  * @see <a href="https://github.com/srhojo">GitHub</a>
  *
  * @param <T>  Entity

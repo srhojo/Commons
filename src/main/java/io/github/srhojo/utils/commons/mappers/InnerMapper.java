@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
  * InnerMapper: interface that define the methods for inner mapper
  * </p>
  *
- * @author: srhojo
+ * @author srhojo
  * @see <a href="https://github.com/srhojo">GitHub</a>
  *
  * @param <I> Inner object who will be result of mapping

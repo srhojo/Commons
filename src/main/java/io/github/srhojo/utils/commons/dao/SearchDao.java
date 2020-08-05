@@ -9,7 +9,7 @@ import org.springframework.data.jpa.domain.Specification;
 /**
  * Specification search interface
  *
- * @author: srhojo
+ * @author srhojo
  * @see <a href="https://github.com/srhojo">GitHub</a>
  *
  * @param <T> Entity

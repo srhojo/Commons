@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
  * OuterMapper: interface that define the methods for outer mapper
  * </p>
  * 
- * @author: srhojo
+ * @author srhojo
  * @see <a href="https://github.com/srhojo">GitHub</a>
  *
  * @param <O> Outer object who will be result of mapping

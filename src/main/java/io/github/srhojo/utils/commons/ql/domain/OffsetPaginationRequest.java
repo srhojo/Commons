@@ -34,21 +34,26 @@ public class OffsetPaginationRequest implements Pageable, Serializable {
      * @param limit  the size of the elements to be returned.
      * @param offset zero-based offset.
      * @param sort   can be {@literal null}.
+     * @return {@link OffsetPaginationRequest}
      */
-    public static OffsetPaginationRequest of(@NotNull @Min(value = 1, message = "Limit size must not be less than one!") final Integer limit,
-                                             @NotNull @Min(value = 0, message = "Offset index must not be less than zero!") final Long offset,
-                                             final Sort sort) {
+    public static OffsetPaginationRequest of(
+            @NotNull @Min(value = 1, message = "Limit size must not be less than one!") final Integer limit,
+            @NotNull @Min(value = 0, message = "Offset index must not be less than zero!") final Long offset,
+            final Sort sort) {
         return new OffsetPaginationRequest(limit, offset, sort);
     }
 
     /**
-     * Creates a new {@link OffsetPaginationRequest} with sort parameter: {@literal Sort.unsorted()}.
+     * Creates a new {@link OffsetPaginationRequest} with sort parameter:
+     * {@literal Sort.unsorted()}.
      *
      * @param limit  the size of the elements to be returned.
      * @param offset zero-based offset.
+     * @return {@link OffsetPaginationRequest}
      */
-    public static OffsetPaginationRequest of(@NotNull @Min(value = 1, message = "Limit size must not be less than one!") final Integer limit,
-                                             @NotNull @Min(value = 0, message = "Offset index must not be less than zero!") final Long offset) {
+    public static OffsetPaginationRequest of(
+            @NotNull @Min(value = 1, message = "Limit size must not be less than one!") final Integer limit,
+            @NotNull @Min(value = 0, message = "Offset index must not be less than zero!") final Long offset) {
         return of(limit, offset, Sort.unsorted());
     }
 
@@ -86,9 +91,10 @@ public class OffsetPaginationRequest implements Pageable, Serializable {
     }
 
     private OffsetPaginationRequest previous() {
-        return hasPrevious() ? new OffsetPaginationRequest((int) getOffset() + getPageSize(), (long) getPageSize(), getSort()) : this;
+        return hasPrevious()
+                ? new OffsetPaginationRequest((int) getOffset() + getPageSize(), (long) getPageSize(), getSort())
+                : this;
     }
-
 
     @Override
     public Pageable previousOrFirst() {
@@ -104,6 +110,5 @@ public class OffsetPaginationRequest implements Pageable, Serializable {
     public boolean hasPrevious() {
         return offset > limit;
     }
-
 
 }
