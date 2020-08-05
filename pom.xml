@@ -27,87 +27,173 @@
 		</developer>
 	</developers>
 
+	<!-- Test using jenkins and nexus at dockers-->
+	<repositories>
+		<repository>
+			<id>maven-group</id>
+			<name>Local Central Repository</name>
+			<url>http://192.168.1.70:8181/repository/maven-group/</url>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
 
+	<<<<<<< HEAD
 	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<maven.compiler.source>1.8</maven.compiler.source>
-		<maven.compiler.target>1.8</maven.compiler.target>
+<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+<maven.compiler.source>1.8</maven.compiler.source>
+<maven.compiler.target>1.8</maven.compiler.target>
 
-		<jacoco.version>0.8.5</jacoco.version>
-		<spring.version>5.1.8.RELEASE</spring.version>
-		<spring-data.version>2.1.9.RELEASE</spring-data.version>
+<jacoco.version>0.8.5</jacoco.version>
+<spring.version>5.1.8.RELEASE</spring.version>
+<spring-data.version>2.1.9.RELEASE</spring-data.version>
 
-		<rsql-parser.version>2.1.0</rsql-parser.version>
-		<javax.persintence.version>2.2</javax.persintence.version>
-		<javax.validation.version>2.0.1.Final</javax.validation.version>
-		<com.fasterxml.jackson.core.version>[2.9.9.1,)</com.fasterxml.jackson.core.version>
-		<io.springfox.swagger.version>2.9.2</io.springfox.swagger.version>
-	</properties>
+<rsql-parser.version>2.1.0</rsql-parser.version>
+<javax.persintence.version>2.2</javax.persintence.version>
+<javax.validation.version>2.0.1.Final</javax.validation.version>
+<com.fasterxml.jackson.core.version>[2.9.9.1,)</com.fasterxml.jackson.core.version>
+<io.springfox.swagger.version>2.9.2</io.springfox.swagger.version>
+</properties>
 
-	<dependencies>
-		<!-- Spring -->
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-core</artifactId>
-			<version>${spring.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.data</groupId>
-			<artifactId>spring-data-commons</artifactId>
-			<version>${spring-data.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.data</groupId>
-			<artifactId>spring-data-jpa</artifactId>
-			<version>${spring-data.version}</version>
-		</dependency>
+<dependencies>
+<!-- Spring -->
+<dependency>
+<groupId>org.springframework</groupId>
+<artifactId>spring-core</artifactId>
+<version>${spring.version}</version>
+</dependency>
+<dependency>
+<groupId>org.springframework.data</groupId>
+<artifactId>spring-data-commons</artifactId>
+<version>${spring-data.version}</version>
+</dependency>
+<dependency>
+<groupId>org.springframework.data</groupId>
+<artifactId>spring-data-jpa</artifactId>
+<version>${spring-data.version}</version>
+</dependency>
 
-		<!--   RSQL -->
-		<dependency>
-			<groupId>cz.jirutka.rsql</groupId>
-			<artifactId>rsql-parser</artifactId>
-			<version>${rsql-parser.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>javax.persistence</groupId>
-			<artifactId>javax.persistence-api</artifactId>
-			<version>${javax.persintence.version}</version>
-		</dependency>
+<!--   RSQL -->
+<dependency>
+<groupId>cz.jirutka.rsql</groupId>
+<artifactId>rsql-parser</artifactId>
+<version>${rsql-parser.version}</version>
+</dependency>
+<dependency>
+<groupId>javax.persistence</groupId>
+<artifactId>javax.persistence-api</artifactId>
+<version>${javax.persintence.version}</version>
+</dependency>
 
+=======
+	<distributionManagement>
+<repository>
+<id>nexus-releases</id>
+<name>release Repository</name>
+<url>http://192.168.1.70:8181/repository/maven-releases/</url>
+<layout>default</layout>
+</repository>
+<snapshotRepository>
+<id>nexus-snapshots</id>
+<name>Snapshots Repository</name>
+<url>http://192.168.1.70:8181/repository/maven-snapshots/</url>
+</snapshotRepository>
+</distributionManagement>
+<!-- End test-->
+
+<properties>
+<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+<maven.compiler.source>1.8</maven.compiler.source>
+<maven.compiler.target>1.8</maven.compiler.target>
+
+<jacoco.version>0.8.4</jacoco.version>
+<spring.version>5.1.8.RELEASE</spring.version>
+<spring-data.version>2.1.9.RELEASE</spring-data.version>
+
+<rsql-parser.version>2.1.0</rsql-parser.version>
+<javax.persintence.version>2.2</javax.persintence.version>
+<javax.validation.version>2.0.1.Final</javax.validation.version>
+<com.fasterxml.jackson.core.version>[2.9.9.1,)</com.fasterxml.jackson.core.version>
+<io.springfox.swagger.version>2.9.2</io.springfox.swagger.version>
+</properties>
+
+<dependencies>
+<!-- Spring -->
+<dependency>
+<groupId>org.springframework</groupId>
+<artifactId>spring-core</artifactId>
+<version>${spring.version}</version>
+</dependency>
+<dependency>
+<groupId>org.springframework.data</groupId>
+<artifactId>spring-data-commons</artifactId>
+<version>${spring-data.version}</version>
+</dependency>
+<dependency>
+<groupId>org.springframework.data</groupId>
+<artifactId>spring-data-jpa</artifactId>
+<version>${spring-data.version}</version>
+</dependency>
+
+<!--   RSQL -->
+<dependency>
+<groupId>cz.jirutka.rsql</groupId>
+<artifactId>rsql-parser</artifactId>
+<version>${rsql-parser.version}</version>
+</dependency>
+<dependency>
+<groupId>javax.persistence</groupId>
+<artifactId>javax.persistence-api</artifactId>
+<version>${javax.persintence.version}</version>
+</dependency>
+
+>>>>>>> a1faa5b6442b4389d87aa43033a4e810c02051cd
 		<!-- Validations -->
-		<dependency>
-			<groupId>javax.validation</groupId>
-			<artifactId>validation-api</artifactId>
-			<version>${javax.validation.version}</version>
-		</dependency>
+<dependency>
+<groupId>javax.validation</groupId>
+<artifactId>validation-api</artifactId>
+<version>${javax.validation.version}</version>
+</dependency>
 
-		<!-- Swagger-core -->
-		<dependency>
-			<groupId>io.springfox</groupId>
-			<artifactId>springfox-swagger2</artifactId>
-			<version>${io.springfox.swagger.version}</version>
-		</dependency>
-	</dependencies>
+<!-- Swagger-core -->
+<dependency>
+<groupId>io.springfox</groupId>
+<artifactId>springfox-swagger2</artifactId>
+<version>${io.springfox.swagger.version}</version>
+</dependency>
+</dependencies>
 
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-source-plugin</artifactId>
+<build>
+<plugins>
+<plugin>
+<groupId>org.apache.maven.plugins</groupId>
+<artifactId>maven-source-plugin</artifactId>
+<<<<<<< HEAD
 				<version>3.2.0</version>
+=======
+				<version>2.2.1</version>
+>>>>>>> a1faa5b6442b4389d87aa43033a4e810c02051cd
 				<executions>
-					<execution>
-						<id>attach-sources</id>
-						<goals>
-							<goal>jar-no-fork</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
+<execution>
+<id>attach-sources</id>
+<goals>
+<goal>jar-no-fork</goal>
+</goals>
+</execution>
+</executions>
+</plugin>
+<<<<<<< HEAD
 			<plugin>
+<groupId>org.apache.maven.plugins</groupId>
+<artifactId>maven-javadoc-plugin</artifactId>
+<version>3.2.0</version>
+=======
+			<!-- <plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-javadoc-plugin</artifactId>
-				<version>3.2.0</version>
+				<version>2.9.1</version>
+>>>>>>> a1faa5b6442b4389d87aa43033a4e810c02051cd
 				<executions>
 					<execution>
 						<id>attach-javadocs</id>
@@ -136,7 +222,14 @@
 						</goals>
 					</execution>
 				</executions>
+<<<<<<< HEAD
 			</plugin>
 		</plugins>
 	</build>
 </project>
+=======
+			</plugin> -->
+</plugins>
+</build>
+</project>
+>>>>>>> a1faa5b6442b4389d87aa43033a4e810c02051cd
