@@ -7,7 +7,7 @@ public class SearchCriteria implements Serializable {
     private static final long serialVersionUID = -8046505327772649554L;
     private String key;
     private SearchOperationEnum operation;
-    private transient Object value;
+    private Object value;
     private boolean orPredicate;
 
     public SearchCriteria() {
@@ -19,6 +19,16 @@ public class SearchCriteria implements Serializable {
         this.key = key;
         this.operation = operation;
         this.value = value;
+    }
+
+    public SearchCriteria(final String orPredicate,final String key, final SearchOperationEnum operation, final Object value) {
+        super();
+        this.key = key;
+        this.operation = operation;
+        this.value = value;
+        this.orPredicate
+                = orPredicate != null
+                && orPredicate.equals(SearchOperationEnum.OR.getSymbol());
     }
 
     /**

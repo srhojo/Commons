@@ -7,7 +7,7 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
-public class OffsetPaginationRequest implements Pageable, Serializable {
+public class OffsetPagination implements Pageable, Serializable {
 
     private static final long serialVersionUID = 3728222061064953889L;
 
@@ -22,36 +22,36 @@ public class OffsetPaginationRequest implements Pageable, Serializable {
      * @param offset zero-based offset.
      * @param sort   can be {@literal null}.
      */
-    private OffsetPaginationRequest(Integer limit, Long offset, Sort sort) {
+    private OffsetPagination(Integer limit, Long offset, Sort sort) {
         this.limit = limit;
         this.offset = offset;
         this.sort = sort != null ? sort : Sort.unsorted();
     }
 
     /**
-     * Creates a new {@link OffsetPaginationRequest} with sort parameters applied.
+     * Creates a new {@link OffsetPagination} with sort parameters applied.
      *
      * @param limit  the size of the elements to be returned.
      * @param offset zero-based offset.
      * @param sort   can be {@literal null}.
-     * @return {@link OffsetPaginationRequest}
+     * @return {@link OffsetPagination}
      */
-    public static OffsetPaginationRequest of(
+    public static OffsetPagination of(
             @NotNull @Min(value = 1, message = "Limit size must not be less than one!") final Integer limit,
             @NotNull @Min(value = 0, message = "Offset index must not be less than zero!") final Long offset,
             final Sort sort) {
-        return new OffsetPaginationRequest(limit, offset, sort);
+        return new OffsetPagination(limit, offset, sort);
     }
 
     /**
-     * Creates a new {@link OffsetPaginationRequest} with sort parameter:
+     * Creates a new {@link OffsetPagination} with sort parameter:
      * {@literal Sort.unsorted()}.
      *
      * @param limit  the size of the elements to be returned.
      * @param offset zero-based offset.
-     * @return {@link OffsetPaginationRequest}
+     * @return {@link OffsetPagination}
      */
-    public static OffsetPaginationRequest of(
+    public static OffsetPagination of(
             @NotNull @Min(value = 1, message = "Limit size must not be less than one!") final Integer limit,
             @NotNull @Min(value = 0, message = "Offset index must not be less than zero!") final Long offset) {
         return of(limit, offset, Sort.unsorted());
@@ -87,12 +87,12 @@ public class OffsetPaginationRequest implements Pageable, Serializable {
 
     @Override
     public Pageable next() {
-        return new OffsetPaginationRequest((int) getOffset() + getPageSize(), (long) getPageSize(), getSort());
+        return new OffsetPagination((int) getOffset() + getPageSize(), (long) getPageSize(), getSort());
     }
 
-    private OffsetPaginationRequest previous() {
+    private OffsetPagination previous() {
         return hasPrevious()
-                ? new OffsetPaginationRequest((int) getOffset() + getPageSize(), (long) getPageSize(), getSort())
+                ? new OffsetPagination((int) getOffset() + getPageSize(), (long) getPageSize(), getSort())
                 : this;
     }
 
@@ -103,7 +103,7 @@ public class OffsetPaginationRequest implements Pageable, Serializable {
 
     @Override
     public Pageable first() {
-        return new OffsetPaginationRequest(0, (long) getPageSize(), getSort());
+        return new OffsetPagination(0, (long) getPageSize(), getSort());
     }
 
     @Override

@@ -1,5 +1,11 @@
 package io.github.srhojo.utils.commons.ql.converter;
 
+import io.github.srhojo.utils.commons.ql.domain.SearchableEntity;
+import io.github.srhojo.utils.commons.ql.expections.QueryLanguageException;
+
+import javax.persistence.Id;
+import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -7,8 +13,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Optional;
-
-import io.github.srhojo.utils.commons.ql.expections.QueryLanguageException;
+import java.util.stream.Stream;
 
 public class ConverterImpl implements Converter {
 
@@ -25,7 +30,7 @@ public class ConverterImpl implements Converter {
         return stringConverter.map(value, (Class) type);
     }
 
-    @SuppressWarnings({ "rawtypes", "unchecked" })
+    @SuppressWarnings({"rawtypes", "unchecked"})
     private void registerDefaultStringConverters() {
         stringConverters.put(String.class, (value, clazz) -> value);
         stringConverters.put(Integer.class, (value, clazz) -> Integer.valueOf(value));
@@ -37,6 +42,29 @@ public class ConverterImpl implements Converter {
         stringConverters.put(BigDecimal.class, (value, clazz) -> new BigDecimal(value));
         stringConverters.put(LocalDate.class, (value, clazz) -> LocalDate.parse(value));
         stringConverters.put(LocalDateTime.class, (value, clazz) -> LocalDateTime.parse(value));
+        stringConverters.put(SearchableEntity.class, (value, clazz) -> convertSearchableEntity(value, clazz));
+    }
+
+    private Object convertSearchableEntity(String value, Class<Object> clazz) {
+        try {
+
+            final Field field = Stream.of(clazz.getDeclaredFields())
+                    .filter(f -> f.getAnnotation(Id.class) != null)
+                    .findFirst()
+                    .orElseThrow(() -> new QueryLanguageException("Primary key not found"));
+
+            //final SearchableEntity searchableEntity = (SearchableEntity) clazz.newInstance();
+            final SearchableEntity searchableEntity = (SearchableEntity) clazz.getDeclaredConstructor(SearchableEntity.class).newInstance();
+
+            field.setAccessible(Boolean.TRUE);
+            field.set(searchableEntity, convert(value, field.getType()));
+
+
+            return searchableEntity;
+
+        } catch (InstantiationException | IllegalAccessException | NoSuchMethodException | InvocationTargetException e) {
+            throw new QueryLanguageException("Error mapping SearchableEntity [" + e.getMessage() + "]");
+        }
     }
 
     private StringConverter<?> lookupStringConverter(final Class<?> type) {

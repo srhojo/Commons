@@ -8,7 +8,8 @@ public enum SearchOperationEnum {
     NEGATION("!="),
     GREATER_THAN("=gt="),
     LESS_THAN("=lt="),
-    LIKE("=in=");
+    LIKE("=in="),
+    OR("'");
 
     private final String symbol;
 
@@ -23,33 +24,35 @@ public enum SearchOperationEnum {
     public static Optional<SearchOperationEnum> getSimpleOperation(final String input) {
         SearchOperationEnum operation;
         switch (input) {
-        case "==":
-            operation = EQUALITY;
-            break;
-        case "!=":
-            operation = NEGATION;
-            break;
-        case "=gt=":
-            operation = GREATER_THAN;
-            break;
-        case "=lt=":
-            operation = LESS_THAN;
-            break;
-        case "=in=":
-            operation = LIKE;
-            break;
-        default:
-            operation = null;
-            break;
+            case "==":
+                operation = EQUALITY;
+                break;
+            case "!=":
+                operation = NEGATION;
+                break;
+            case "=gt=":
+                operation = GREATER_THAN;
+                break;
+            case "=lt=":
+                operation = LESS_THAN;
+                break;
+            case "=in=":
+                operation = LIKE;
+                break;
+            case "'":
+                operation = OR;
+                break;
+            default:
+                operation = null;
+                break;
         }
         return Optional.ofNullable(operation);
-
     }
 
     /**
      * @return the symbol of operation
      */
-    private String getSymbol() {
+    public String getSymbol() {
         return symbol;
     }
 }

@@ -41,7 +41,7 @@ public class CustomSpecification<T> implements Specification<T> {
             return criteriaBuilder.lessThan(root.get(criteria.getKey()), criteria.getValue().toString());
         case LIKE:
             return criteriaBuilder.like(criteriaBuilder.upper(root.get(criteria.getKey())), "%"
-                    + converter.convert(criteria.getValue().toString(), getKeyClass(root, criteria.getKey())) + "%");
+                    + converter.convert(criteria.getValue().toString().toUpperCase(), getKeyClass(root, criteria.getKey())) + "%");
         default:
             return null;
         }

@@ -6,7 +6,7 @@
 
 	<groupId>io.github.srhojo.utils</groupId>
 	<artifactId>commons</artifactId>
-	<version>1.0.0</version>
+	<version>1.1.0</version>
 
 	<name>restclient</name>
 	<url>https://github.com/srhojo/Commons</url>
