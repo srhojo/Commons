@@ -13,7 +13,10 @@ import java.util.stream.Collectors;
  * @author srhojo
  * @see <a href="https://github.com/srhojo">GitHub</a>
  */
-public interface CreateDao<T, ID> {
+public interface CreateDaoV2<T, ID> {
+
+
+    JpaRepository<T,ID> getRepository();
 
     /**
      * Method to save an entity into BBDD
@@ -21,14 +24,18 @@ public interface CreateDao<T, ID> {
      * @param t new entity
      * @return created entity
      */
-    T save(T t);
+    default T save(T t) {
+        return getRepository().save(t);
+    }
 
     /**
      * Method to remove an entity from BBDD
      *
      * @param id Entity's id
      */
-    void delete(ID id);
+    default void delete(ID id){
+        getRepository().deleteById(id);
+    }
 
     /**
      * Method to create a list of entities

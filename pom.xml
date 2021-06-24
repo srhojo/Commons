@@ -28,7 +28,7 @@
 	</developers>
 
 	<!-- Test using jenkins and nexus at dockers-->
-	<repositories>
+	<!--<repositories>
 		<repository>
 			<id>maven-group</id>
 			<name>Local Central Repository</name>
@@ -51,7 +51,7 @@
 			<name>Snapshots Repository</name>
 			<url>http://192.168.1.70:8181/repository/maven-snapshots/</url>
 		</snapshotRepository>
-	</distributionManagement>
+	</distributionManagement> -->
 	<!-- End test-->
 
 	<properties>
